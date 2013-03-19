@@ -1,4 +1,3 @@
-Evapotranspiration
-==================
-
-Measuring and Modelling Evapotranspiration
+# Evapotranspiration
+## Measuring and Modelling Evapotranspiration
+Environmental Engineering ETH Zurich - Labor II
