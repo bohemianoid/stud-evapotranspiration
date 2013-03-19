@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper,tablecaptionabove]{scrartcl} 
+\usepackage{ngerman}   % neue deutsche Rechtschreibung (Trennregeln ...)
+\usepackage[utf8]{inputenc} % UTF8 Zeichenkodierung, falls das nicht
+                            % funktioniert
+                            % \usepackage[latin1]{inputenc} verwenden
+\usepackage[T1]{fontenc} % Deutsche Umlaute und so
+\usepackage{ae}        % Schriften für Adobe Acrobat
+\usepackage{textcomp}  % mehr Sonderzeichen
+\usepackage{calc}      % Paket für die Berechnung von Längen
+\usepackage{color}     % Farbiger Text etc.
+\usepackage{graphicx}  % importieren von Graphiken
+\usepackage{subfigure} % Mehrere Abbildungen in einer figur
+\usepackage{booktabs}  % für schöne Tabellen
+\usepackage[square]{natbib}    % Für Literaturverzeichnis nach DIN 1505
+\usepackage{scrpage2}  % Kopf- und Fusszeilen
+\usepackage{tabularx}  % Tabellen auf Textbreite einpassen
+\usepackage{verbatim}  % Programmcode angeben
+\usepackage{listings}  % Programmcode mit mehr Optionen
+\usepackage{hyperref}  % Links innerhalb des PDF-Files
+\usepackage{subscript} % Hoch-, Tiefstellen
+\usepackage{float} % das die cheibe Grafike au döt bliibe, wo si sötte
+\usepackage{pdflscape} % Hoch-, Querformat
+\usepackage{a4wide} % Textbreite
+
+
+
+
+
+% Titel definieren
+\title{Messung und Modelierung der Evapotranspiration}
+\author{Debora Jäckel\\Simon Roth\\Gabriela Schär \\Alexandra Schuler}
+\date{\today{}}
+
+\begin{document}
+
+% für Literaturverzeichnis
+\bibliographystyle{natbib}
+\bibliography{beispielbib}
+
+% Schriften für Abbildungsbeschriftungen
+\renewcommand*{\capfont}{\normalfont}
+\renewcommand*{\caplabelfont}{\sffamily\bfseries}
+
+
+% Kopf- und Fusszeilen definieren
+\pagestyle{scrheadings}
+
+% Dynamische Kopfzeilen
+%\automark[section]{chapter}
+
+% Statische Kopfzeilen
+\ihead{Labor II}
+\chead{ }
+\ohead{Experiment 4}
+\ifoot{}
+\cfoot{ }
+\ofoot{\pagemark}
+
+% Trennstriche zwischen Kopf- und Fusszeile
+\setheadsepline{0.5pt}
+\setfootsepline{0.5pt}
+
+% Schrftart für Kopfzeile
+\setkomafont{pagehead}{\normalfont\slshape}
+
+% Titel ausgeben
+\maketitle
+
+\newpage
+
+\input{zusammenfassung}
+
+\newpage
+% Inhaltsverzeichnis
+\tableofcontents
+% Neue Seite
+\newpage
+
+
+\input{einleitung}
+\input{methode}
+\input{resultate}
+\input{diskussion}
+
+\input{anhang}
+
+
+% für Literaturverzeichnis
+\bibliographystyle{natbib}
+\bibliography{beispielbib}
+
+
+\end{document}
+
+$ latex myarticle
+$ bibtex myarticle
+$ latex myarticle
+$ latex myarticle
