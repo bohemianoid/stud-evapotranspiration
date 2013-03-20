@@ -151,6 +151,40 @@ z & Höhe über Meer [m]\\
 \end{tabular}
 \end{table}
 
+\begin{equation}
+\label{eq:Ra_short_period}
+R_{a}=\frac{12 (60)}{\pi}G_{sc}*d_{r}[(\omega _{2}-\omega _{1})sin(\varphi)sin(\delta)+cos(\varphi)cos(\delta)(sin(\omega _{2})- sin(\omega _{1}))]
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einer Stunde (oder in kürzerem Zeitintervall ) [MJ/m$\mathrm{^{2}}$h]\\
+G$\mathrm{_{sc}}$ & Solarkonstante = 0.0820 MJ/m$\mathrm{^{2}}$min\\
+d$\mathrm{_{r}}$ & inverse relative Distanz Sonne-Erde\\
+$\mathrm{\delta}$ & solare Deklination [rad]\\
+$\mathrm{\varphi}$ & geografische Breite [rad]\\
+$\mathrm{\omega_{1}}$ & Sonneneinstrahlwinkel am Anfang der Zeitperiode [rad]\\
+$\mathrm{\omega_{2}}$ & Sonneneinstrahlwinkel am Ende der Zeitperiode [rad]\\
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\label{eq:Ra_long_period}
+R_{a}=\frac{24 (60)}{\pi}G_{sc}*d_{r}[\omega _{s}sin(\varphi)sin(\delta)+cos(\varphi)cos(\delta)sin(\omega _{s}]
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einer Stunde (oder in kürzerem Zeitintervall ) [MJ/m$\mathrm{^{2}}$h]\\
+G$\mathrm{_{sc}}$ & Solarkonstante = 0.0820 MJ/m$\mathrm{^{2}}$min\\
+d$\mathrm{_{r}}$ & inverse relative Distanz Sonne-Erde\\
+$\mathrm{\delta}$ & solare Deklination [rad]\\
+$\mathrm{\varphi}$ & geografische Breite [rad]\\
+$\mathrm{\omega_{s}}$ & Sonneneinstrahlwinkel [rad]\\
+\end{tabular}
+\end{table}
+
+
 
 \item[Psychrometerkonstante]
 \begin{equation}
@@ -168,7 +202,7 @@ P & Atmosphärendruck [kPa]\\
 \item[Windgeschwindigkeit in 2 m Höhe]
 \begin{equation}
 \label{eq:u2}
-u_2=u_z\frac{4.87}{ln(67.8z-5.42}
+u_2=u_z\frac{4.87}{ln(67.8z-5.42)}
 \end{equation}
 \begin{table}[H]
 \centering
