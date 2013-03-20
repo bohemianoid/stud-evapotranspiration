@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  19 MAR 2013 16:15
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  20 MAR 2013 12:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -807,7 +807,7 @@ Package: a4wide 1994/08/30
 (/usr/local/texlive/2012/texmf-dist/tex/latex/ntgclass/a4.sty
 Package: a4 2004/04/15 v1.2g A4 based page layout
 ))
-No file Experiment_4.aux.
+(./Experiment_4.aux)
 \openout1 = `Experiment_4.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
@@ -824,6 +824,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 34.
+
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
@@ -874,76 +875,93 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 34.
 LaTeX Info: Redefining \pageref on input line 34.
 LaTeX Info: Redefining \nameref on input line 34.
+
+(./Experiment_4.out) (./Experiment_4.out)
 \@outlinefile=\write3
 \openout3 = `Experiment_4.out'.
 
-
-No file Experiment_4.bbl.
 Package scrkbase Info: You've told me to redefine the font selection of the
 (scrkbase)             element `pagehead' that is an alias of element
-(scrkbase)             `pageheadfoot' on input line 64.
+(scrkbase)             `pageheadfoot' on input line 61.
+
 
 Package scrkbase Warning: `pagehead' is only an alias of `pageheadfoot'.
 (scrkbase)                Font of page foot may also be changed on input line 6
-4.
+1.
 
-LaTeX Font Info:    Try loading font information for T1+aess on input line 68.
+LaTeX Font Info:    Try loading font information for T1+aess on input line 65.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/ae/t1aess.fd
 File: t1aess.fd 1997/11/16 Font definitions for T1/aess.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <17.28> on input line 68.
+(Font)              <17.28> on input line 65.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 68.
+(Font)              <12> on input line 65.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 69.
+(Font)              <8> on input line 66.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 69.
+(Font)              <6> on input line 66.
  [1
 
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./zusa
 mmenfassung.tex)
-[2]
+[2] (./Experiment_4.toc)
 \tf@toc=\write4
 \openout4 = `Experiment_4.toc'.
 
- [3] (./einleitung.tex) (./methode.tex) (./resultate.tex) (./diskussion.tex) (.
-/anhang.tex)
-No file Experiment_4.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 93.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 93.
+ [3] (./einleitung.tex) (./methode.tex
+<figures/penman_widerstand.jpg, id=48, 952.55875pt x 578.16pt>
+File: figures/penman_widerstand.jpg Graphic file (type jpg)
+
+<use figures/penman_widerstand.jpg>
+Package pdftex.def Info: figures/penman_widerstand.jpg used on input line 11.
+(pdftex.def)             Requested size: 368.57838pt x 223.70827pt.
+ [4] [5pdfTeX warning (ext4): destination with the same identifier (name{figure
+.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.39 \begin{equation}
+                      <./figures/penman_widerstand.jpg>]) (./resultate.tex)
+(./diskussion.tex) (./anhang.tex) (./Experiment_4.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 90.
  (./Experiment_4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 93.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 93.
-
-
-Package rerunfilecheck Warning: File `Experiment_4.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Experiment_4.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  CBD34386781D5DFF7E9011E65A5E5684;176.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 93.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 90.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 90.
+Package rerunfilecheck Info: File `Experiment_4.out' has not changed.
+(rerunfilecheck)             Checksum: 4E5B802C4E00086AC284EBD2E5C49AFA;244.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 90.
  ) 
 Here is how much of TeX's memory you used:
- 9837 strings out of 493488
- 145375 string characters out of 3141326
- 244171 words of memory out of 3000000
- 12959 multiletter control sequences out of 15000+200000
- 22870 words of font info for 49 fonts, out of 3000000 for 9000
+ 9907 strings out of 493488
+ 146302 string characters out of 3141326
+ 251686 words of memory out of 3000000
+ 12993 multiletter control sequences out of 15000+200000
+ 31216 words of font info for 63 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,10n,54p,298b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></
-usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></u
-sr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on Experiment_4.pdf (4 pages, 45516 bytes).
+ 38i,12n,54p,628b,331s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pf
+b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
+</usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
+usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
+r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
+local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/lo
+cal/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local
+/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/te
+xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texli
+ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
+/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on Experiment_4.pdf (6 pages, 301680 bytes).
 PDF statistics:
- 48 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
