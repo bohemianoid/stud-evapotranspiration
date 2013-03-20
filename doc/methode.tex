@@ -1,8 +1,63 @@
 \section{Methode}
-
 Für die Bestimmung der Evapotranspiration werden die Lysimeter- und Meteodaten mit MATLAB prozessiert. Da die Meteodaten in UTC und die Lysimeterdaten in MEZ vorliegen, müssen die Datensätze zuerst an eine Zeit angepasst werden. Zudem müssen die Einheiten so angepasst werden, dass sie auf die jeweiligen Berechnungsformeln passen.
+\subsection {Lysimeter}
 
-\subsection{FAO Penman-Monteith}
+Ein Lysimeter ist eine Anlage, die zur Analyse von Wasser- und Stofftransport durch den Boden dient. Es besteht aus einem zylindrischen Topf, der mit Erde gefüllt ist. Am unteren Ende befindet sich ein Auslass für das versickerte Wasser und am Rand befinden sich auf verschiedenen Höhen diverse Messsonden. Wenn das Lysimeter auf einer Waage steht, kann zusätzlich die Gewichtsveränderung und somit der Wasserinput durch Niederschlag und der Wasserverlust durch die Evapotranspiration gemessen werden. Die Abbildung \ref{fig:lysimeter_ART}  zeigt die oberirdische Ansicht der Lysimter der ART. Eine Beschreibung der Komponenten der Lysimeter ist in der Abbildung \ref{fig:lysimeter_schema} zu sehen.\\
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/lysimeter_ART.jpg}
+\caption{Lysimeteranlage der Forschungsanstalt Agroscope Reckenholz-Tänikon ART aus \cite{art}}
+\label{fig:lysimeter_ART}
+\end{figure}
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/lysimeter_schema.jpg}
+\caption{Schematische Darstellung eines Lysimeters aus \cite{ugt}}
+\label{fig:lysimeter_schema}
+\end{figure}
+
+
+Zur Berechnung der Evapotranspiration mittels Lysimeterdaten wird die Bilanzformel (\ref{eq:wasserbilanz}) verwendet.
+
+
+\begin{equation}
+\label{eq:wasserbilanz}
+AET=P-SW-\Delta W
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+AET& Reale Evapotranspiration [H/T$^{-1}$]\\
+P& Niederschlagsrate  [H/T$^{-1}$]\\
+SW & Sickerwasserrate  [H/T$^{-1}$]\\
+$\Delta W$ & Änderung der Wasserspeichers  [H/T$^{-1}$]\\
+\end{tabular}
+\end{table}
+
+
+Die Änderung des Wasserspeichers wird aus der Gewichtsdifferenz des Lysimeters berechnet (\ref{eq:gewichtsänderung}).
+
+
+\begin{equation}
+\label{eq:gewichtsänderung}
+\Delta W=\frac{\Delta m}{\rho_{Wasser}* A}
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\Delta W$ & Änderung der Wasserspeichers  [H/T$^{-1}$]\\
+$\Delta m$ & Gewichtsänderung [kg]\\
+$\rho_{Wasser}$ & Dichte des Wassers [kg/m$^3$]\\
+A & Oberflläche des Lysimeters [m$^2$]
+\end{tabular}
+\end{table}
+
+ Zur Bestimmung der Niederschlagsrate werden die Daten eines Niedeschlagsmessgeräts verwendet. Die Sickerwasserrate wird aus de
+
+
+\subsection{FAO Penman-Monteith-Methode}
 
 Die Penman-Monteith-Methode kombiniert die beiden Ansätze der Massenbilanz und der Energiebilanz. Alle in der Formel enthaltenen Parameter können entweder direkt gemessen oder dann aus meteorologischen Daten berechnet werden. Die Methode impliziert, dass der aerodynamische und der Oberflächenwiderstand von der Oberflächenbepflanzung abhängig sind [vgl.\,Abb.\,\ref{fig:widerstand}]. 
 
@@ -22,9 +77,9 @@ ET_0=\frac{0.408\Delta \left(R_n-G\right)+\gamma \frac{900}{T+273}u_2\left(e_s-e
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-$\mathrm{ET_0}$ & potentielle Referenzevapotranspiration $\mathrm{[mm/s]}$\\
-$\mathrm{R_n}$ & Nettostrahlung $\mathrm{[W/m^2]}$ \\
-$\mathrm{G}$ & Bodenwärmefluss $\mathrm{[W/m^2]}$\\
+$\mathrm{ET_0}$ & potentielle Referenzevapotranspiration $\mathrm{[mm/d]}$\\
+$\mathrm{R_n}$ & Nettostrahlung $\mathrm{[MJ/m^2d]}$ \\
+$\mathrm{G}$ & Bodenwärmefluss $\mathrm{[MJ/m^2d]}$\\
 $\mathrm{\Delta}$ & Steigung der Sättigungsdampfdruckkurve $\mathrm{[kPa/^{\circ}C]}$\\
 $\mathrm{\gamma}$ & Psychrometerkonstante $\mathrm{[kPa/^{\circ}C]}$\\
 $\mathrm{T}$ & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\
@@ -49,22 +104,158 @@ $\mathrm{ET_C}$ & Evapotranspiration einer spezifischen Pflanze $\mathrm{[mm/s]}
 \end{tabular}
 \end{table}
 
-Die Nettostrahlung $\mathrm{R_n}$ und die Temperatur T können aus den Meteodaten entnommen werden. Die übrigen Parameter müssen berechnet werden. Die FAO\,\cite{fao} gibt folgende Formeln:
+Die Temperatur T kann aus den Meteodaten entnommen werden. Die übrigen Parameter müssen berechnet werden. Die FAO\,\cite{fao} gibt folgende Formeln:
 
 \begin{description}
-\item[Steigung der Sättigungsdampfdruckkurve]~
+\item[Steigung der Sättigungsdampfdruckkurve]
 \begin{equation}
-\label{eq:steigung}
+\label{eq:delta}
 \Delta=\frac{4098\left[0.6108*e^{\frac{17.27*T}{T+237.3}}\right]}{\left(T+237.3\right)^2}
 \end{equation}
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
 $\mathrm{\Delta}$ & Steigung der Sättigungsdampfdruckkurve $\mathrm{[kPa/^{\circ}C]}$\\
-T & Temperatur mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\
+T & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\
+\end{tabular}
+\end{table}
+
+\item[Nettostrahlung]
+\begin{equation}
+\label{eq:rn}
+R_n=0.77*R_s-\sigma\left[\frac{T_{max,K}^4+T_{min,K}^4}{2}\right]\left(0.34-0.14\sqrt{e_a}\right)\left(1.35\frac{R_s}{R_{s0}}-0.35\right)
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{R_n}$ & Nettostrahlung $\mathrm{[MJ/m^2d]}$ \\
+$\mathrm{R_s}$ & Kurzwellenstrahlung $\mathrm{[MJ/m^2d]}$ \\
+$\mathrm{\sigma}$ & Stefan Boltzmann Konstante $\mathrm{[4.903*10^{-9}\,MJ/K^4m^2d]}$\\
+$\mathrm{T_{max,K}}$ & maximale Temperatur während 24 h [K]\\
+$\mathrm{T_{min,K}}$ & minimale Temperatur während 24 h [K]\\
+$\mathrm{e_a}$ & aktueller Dampfdruck [kPa]\\
+$\mathrm{R_{s0}}$ & Kurzwellenstrahlung ohne Wolkenbedeckung $\mathrm{[MJ/m^2d]}$\\
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\label{eq:rs0}
+R_{s0}=\left(0.75+2*10^{-5}z\right)*R_a
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{R_s0}$ & Kurzwellenstrahlung ohne Wolkenbedeckung $\mathrm{[MJ/m^2d]}$\\
+$\mathrm{R_a}$ & extraterrestrische Strahlung $\mathrm{[MJ/m^2d]}$ \\
+z & Höhe über Meer [m]\\
 \end{tabular}
 \end{table}
 
 
+\item[Psychrometerkonstante]
+\begin{equation}
+\label{eq:gamma}
+\gamma=0.665*10^{-3} P
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{\gamma}$ & Psychrometerkonstante $\mathrm{[kPa/^{\circ}C]}$\\
+P & Atmosphärendruck [kPa]\\
+\end{tabular}
+\end{table}
+
+\item[Windgeschwindigkeit in 2 m Höhe]
+\begin{equation}
+\label{eq:u2}
+u_2=u_z\frac{4.87}{ln(67.8z-5.42}
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{u_2}$ & Windgeschwindigkeit in 2\,m Höhe $\mathrm{[m/s]}$\\
+$\mathrm{u_z}$ & Windgeschwindigkeit in z\,m Höhe $\mathrm{[m/s]}$\\
+z & Messhöhe [m]\\
+\end{tabular}
+\end{table}
+
+\item[Sättigungsdampfdruck]
+\begin{equation}
+\label{eq:es}
+e_s=0.6108*e^{\frac{17.27T}{T+273.3}}
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{e_s}$ & Sättigungsdampfdruck $\mathrm{[kPa]}$\\
+T & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\\end{tabular}
+\end{table}
+
 \end{description}
+
+\subsection{Turc-Methode}
+Das Modell von Turc ist für Frankreich und Nordafrika entwickelt worden und ist nur für Temperaturen über $\mathrm{^{\circ}C}$ definiert.
+
+Es ist ein strahlungsbasiertes empirisches Modell. Als Input Parameter wird aber nicht nur die globale Strahlung, sondern auch die Temperatur benötigt. Das Modell ist nur für Temperaturen im positiven Bereich anwendbar und wird ungenau bei tiefen Temperaturen. Die potentielle Evapotranspirationsrate berechnet sich zu:
+
+\begin{equation}
+\label{eq:turc}
+PET=0.31*C*\left(R_G+2.094\right)*\frac{T}{T+15}
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+PET & Evapotranspirationsrate nach Turc  $\mathrm{[mm/d]}$\\
+T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{{\circ}C]}$\\
+$\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
+C & für rel. Luftfeuchtigkeit RH $\geq$ 50\% = 1\\
+\end{tabular}
+\end{table}
+Für eine rel. Luftfeuchtigkeit < 50\% gilt:
+\begin{equation}
+\label{eq:turc_c}
+C=1+\left(\frac{50-RH}{70}\right)
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+RH& durchschnittliche rel. Luftfeuchtigkeit [\%]\\
+\end{tabular}
+\end{table}
+
+\subsection{Ivanov-Methode}
+Das Modell von Ivanov ist eine modifizierte Version des Modells von Turc. Es kann für die Abschätzung der Evapotranspirationsrate bei tieferen Temperaturen in den Monaten November bis Februar genutzt werden und ist ein temperaturbasiertes Modell. Für die Berechnung der täglichen Evapotranspiration wird folgende Formel benutzt:
+
+\begin{equation}
+\label{eq:ivanov_d}
+PET=0.000036*(25+T)^2*(100-RH)
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+PET & Evapotranspirationsrate nach Ivanov  $\mathrm{[mm/d]}$\\
+T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{{^\circ}C]}$\\
+$\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
+\end{tabular}
+\end{table}
+
+Für die monatliche Evapotranspiration wird folgende Formel verwendet:
+
+\begin{equation}
+\label{eq:ivanov_m}
+PET=0.0011*(25+T)^2*(100-RH)
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+PET & Evapotranspirationsrate nach Ivanov  $\mathrm{[mm/Mt]}$\\
+T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{{^\circ}C]}$\\
+$\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
+\end{tabular}
+\end{table}
+
+
+
+
+
 
