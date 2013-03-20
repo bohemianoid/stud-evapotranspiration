@@ -77,5 +77,8 @@ aet = percip-percol-dweight;
 
 % figures
 figure( 1 )
-plot( time( ~isnan( aet ) ), aet( ~isnan( aet ) ) )
+hold on
+plot( time( ~isnan( aet ) ), aet( ~isnan( aet ) ), 'g' )
+plot( time( ~isnan( percip ) ), percip( ~isnan( percip ) ), 'b' )
+ylim( [ 0 max( percip ) ] )
 datetick( 'x', 'mmm' )
