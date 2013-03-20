@@ -4,8 +4,8 @@ function [ pet ] = penmanMonteith( hTime, press, Tair, relHum, windSp )
 
     % constants
     z  = 2;
-    Lz = ;
-    Lm = ;
+    Lz = 0;
+    Lm = 0;
 
     % psychrometric constant [kPa/°C]        
     psyConst = 0.665*10^-3*press;

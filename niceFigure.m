@@ -1,4 +1,4 @@
-function [  ] = niceFigure( x, y1, y2, color1, color2, t )
+function [  ] = niceFigure( x, y1, y2, color1, color2, t, titleText )
 %NICE_FIGURE Prints nice figure
 %   Detailed explanation goes here
     
@@ -9,6 +9,6 @@ function [  ] = niceFigure( x, y1, y2, color1, color2, t )
     xlim( [ datenum( t( 1 ), 'dd.mm.yyyy' ) datenum( t( 2 ), 'dd.mm.yyyy' ) ] )
     ylim( [ 0 max( max( y1 ), max( y2 ) ) ] )
     datetick( 'x', 'keeplimits' )
+    title( titleText )
 
 end
-

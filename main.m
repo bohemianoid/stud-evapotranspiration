@@ -1,15 +1,18 @@
-% Author:        Debora Jäckel, Simon Roth, Gabriela Schär, Alexandra Schuler
-%                Institute of Environmental Engineering, ETH Zurich
-%                Labor II
-% Version:       March 2013
-% Last revision: 19. March 2013
+%% Measuring and Modelling Evapotranspiration
+% Authors:       Debora Jäckel, Simon Roth, Gabriela Schär, Alexandra Schuler //
+%                Institute of Environmental Engineering, ETH Zurich //
+%                Labor II //
+% Version:       March 2013 //
+% Last revision: 20. March 2013
+
+
+%% Reset workspace
 
 clear all
 close all
 
 
-% import data
-% -------------------------------------------------------------------------
+%% Import data
 
 lysimeter.folder = 'data/2012/lysimeter/';
 lysimeter.file   = '2012_lysimeter_01.txt';
@@ -25,14 +28,13 @@ lysimeter.data( :, 1 ) = datenum( num2str( lysimeter.data( :, 1 ) ), 'yyyymmddHH
 meteo.data             = [ nan( 1, size( meteo.data, 2 ) ); meteo.data ];
 meteo.data             = [ lysimeter.data( :, 1 ), meteo.data( 1:end-1, 2:end ) ];
 
-% define constants
-% -------------------------------------------------------------------------
+
+%% Define constants
 
 t = { '01.01.2012', '31.12.2012' };     % [dd.mm.yyyy]
 
 
-% define vectors
-% -------------------------------------------------------------------------
+%% Define vectors
 
 % time
 time.h = lysimeter.data( :, 1 );                    % [h]
@@ -87,8 +89,7 @@ windSp.m = monthlyMean( time.h, windSp.h );         % [m/s]
 clear lysimeter meteo
 
 
-% compute evapotranspiration
-% -------------------------------------------------------------------------
+%% Compute evapotranspiration
 
 % actual evapotranspiration
 aet.h = percip.h-percol.h-storage.h;    % [mm]
@@ -98,7 +99,8 @@ aet.m = percip.m-percol.m-storage.m;    % [mm]
 % penman-monteith
 penmanMonteith( time.h, press.h, Tair.h, relHum.h, windSp.h );
 
-% figures
-niceFigure( time.h, percip.h, aet.h, 'b', 'g', t )
-niceFigure( time.d, percip.d, aet.d, 'b', 'g', t )
-niceFigure( time.m, percip.m, aet.m, 'b', 'g', t )
+
+%% Figures
+niceFigure( time.h, percip.h, aet.h, 'b', 'g', t, 'Houarly Actual Evapotranspiration' )
+niceFigure( time.d, percip.d, aet.d, 'b', 'g', t, 'Daily Actual Evapotranspiration' )
+niceFigure( time.m, percip.m, aet.m, 'b', 'g', t, 'Monthly Actual Evapotranspiration' )
