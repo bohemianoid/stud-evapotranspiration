@@ -31,6 +31,8 @@ lysimeter_data( size( lysimeter_data, 1 ), 1 ) = lysimeter_data( size( lysimeter
 
 
 % define constants
+% -------------------------------------------------------------------------
+
 A         = 1;      % [m2]
 rho_water = 1000;   % [kg/m3]
 
@@ -43,25 +45,26 @@ time = datenum( num2str( lysimeter_data( :, 1 ) ), 'yyyymmddHH' );
 time( size( time ) ) = time( size( time ) )+1/24;
 
 % weight
-weight = lysimeter_data( :, 4 );    % [kg]
+weight  = lysimeter_data( :, 4 );                               % [kg]
+dweight = [ nan( 1, 1 ); diff( weight ) ]/rho_water/A*1000;     % [mm]
 
 % percolation
-percol = lysimeter_data( :, 5 );    % [mm]
+percol = lysimeter_data( :, 5 );                                % [mm]
 
 % solar radiation
-R_s = meteo_data( :, 6 );           % [W/m2]
+R_s = meteo_data( :, 6 );                                       % [W/m2]
 
 % air temperature
-T_air = meteo_data( :, 7 );         % [°C]
+T_air = meteo_data( :, 7 );                                     % [°C]
 
 % soil temperature
-T_soil = meteo_data( :, 8 );        % [°C]
+T_soil = meteo_data( :, 8 );                                    % [°C]
 
 % precipitation
-percip = meteo_data( :, 9 );        % [mm]
+percip = meteo_data( :, 9 );                                    % [mm]
 
 % relative humidity
-relhum = meteo_data( :, 10 );       % [%]
+relhum = meteo_data( :, 10 );                                   % [%]
 
 clear lysimeter_data meteo_data
 
@@ -70,10 +73,9 @@ clear lysimeter_data meteo_data
 % -------------------------------------------------------------------------
 
 % actual evapotranspiration
-lysometer = aet( percip, percol, weight, A, rho_water );
-
+aet = percip-percol-dweight;
 
 % figures
 figure( 1 )
-plot( time, lysometer )
+plot( time( ~isnan( aet ) ), aet( ~isnan( aet ) ) )
 datetick( 'x', 'mmm' )
