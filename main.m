@@ -24,11 +24,9 @@ meteo_data     = dlmread( [ data_folder meteo_folder meteo_file ], ';', 3, 1 );
 clear data_folder lysimeter_folder meteo_folder lysimeter_file meteo_file
 
 % correct time shift
-lysimeter_data = [ lysimeter_data; nan( 1, size( lysimeter_data, 2 ) ) ];
-meteo_data     = [ nan( 1, size( meteo_data, 2 ) ); meteo_data ];
-
-lysimeter_data( size( lysimeter_data, 1 ), 1 ) = lysimeter_data( size( lysimeter_data, 1 )-1, 1 );
-
+lysimeter_data( :, 1 )   = datenum( num2str( lysimeter_data( :, 1 ) ), 'yyyymmddHH' );
+meteo_data               = [ nan( 1, size( meteo_data, 2 ) ); meteo_data ];
+meteo_data               = [ lysimeter_data( :, 1 ), meteo_data( 1:end-1, 2:end ) ];
 
 % define constants
 % -------------------------------------------------------------------------
@@ -41,30 +39,37 @@ rho_water = 1000;   % [kg/m3]
 % -------------------------------------------------------------------------
 
 % time
-time = datenum( num2str( lysimeter_data( :, 1 ) ), 'yyyymmddHH' );
-time( size( time ) ) = time( size( time ) )+1/24;
+time_h = lysimeter_data( :, 1 );        % [h]
+time_d = daily_mean( time_h );
+time_d = floor( time_d );               % [d]
 
 % weight
-weight  = lysimeter_data( :, 4 );                               % [kg]
-dweight = [ nan( 1, 1 ); diff( weight ) ]/rho_water/A*1000;     % [mm]
+weight_h  = lysimeter_data( :, 4 );     % [kg]
+weight_d  = daily_mean( weight_h );     % [kg]
 
 % percolation
-percol = lysimeter_data( :, 5 );                                % [mm]
+percol_h = lysimeter_data( :, 5 );      % [mm]
+percol_d = daily_sum( percol_h );       % [mm]
 
 % solar radiation
-R_s = meteo_data( :, 6 );                                       % [W/m2]
+R_s_h = meteo_data( :, 6 );             % [W/m2]
+R_s_d = daily_mean( R_s_h );            % [W/m2]
 
 % air temperature
-T_air = meteo_data( :, 7 );                                     % [°C]
+T_air_h = meteo_data( :, 7 );           % [°C]
+T_air_d = daily_mean( T_air_h );        % [°C]
 
 % soil temperature
-T_soil = meteo_data( :, 8 );                                    % [°C]
+T_soil_h = meteo_data( :, 8 );          % [°C]
+T_soil_d = daily_mean( T_soil_h );      % [°C]
 
 % precipitation
-percip = meteo_data( :, 9 );                                    % [mm]
+percip_h = meteo_data( :, 9 );          % [mm]
+percip_d = daily_sum( percip_h );       % [mm]
 
 % relative humidity
-relhum = meteo_data( :, 10 );                                   % [%]
+relhum_h = meteo_data( :, 10 );         % [%]
+relhum_d = daily_mean( relhum_h );      % [%]
 
 clear lysimeter_data meteo_data
 
@@ -73,12 +78,11 @@ clear lysimeter_data meteo_data
 % -------------------------------------------------------------------------
 
 % actual evapotranspiration
-aet = percip-percol-dweight;
+dweight_h = gradient( weight_h )/rho_water/A*1000;      % [mm]
+dweight_d = gradient( weight_d )/rho_water/A*1000;      % [mm]
+aet_h     = percip_h-percol_h-dweight_h;                % [mm]
+aet_d     = percip_d-percol_d-dweight_d;                % [mm]
 
 % figures
-figure( 1 )
-hold on
-plot( time( ~isnan( aet ) ), aet( ~isnan( aet ) ), 'g' )
-plot( time( ~isnan( percip ) ), percip( ~isnan( percip ) ), 'b' )
-ylim( [ 0 max( percip ) ] )
-datetick( 'x', 'mmm' )
+nice_figure( time_h, percip_h, aet_h, 'b', 'g', '01.05.2012', '01.06.2012' )
+nice_figure( time_d, percip_d, aet_d, 'b', 'g', '01.05.2012', '01.06.2012' )
