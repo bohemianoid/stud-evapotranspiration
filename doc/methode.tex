@@ -158,7 +158,7 @@ R_{a}=\frac{12 (60)}{\pi}G_{sc}*d_{r}[(\omega _{2}-\omega _{1})sin(\varphi)sin(\
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einer Stunde (oder in kürzerem Zeitintervall ) [MJ/m$\mathrm{^{2}}$h]\\
+R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einer Stunde (oder in kürzerem Zeitintervall) [MJ/m$\mathrm{^{2}}$h]\\
 G$\mathrm{_{sc}}$ & Solarkonstante = 0.0820 MJ/m$\mathrm{^{2}}$min\\
 d$\mathrm{_{r}}$ & inverse relative Distanz Sonne-Erde\\
 $\mathrm{\delta}$ & solare Deklination [rad]\\
@@ -170,19 +170,102 @@ $\mathrm{\omega_{2}}$ & Sonneneinstrahlwinkel am Ende der Zeitperiode [rad]\\
 
 \begin{equation}
 \label{eq:Ra_long_period}
-R_{a}=\frac{24 (60)}{\pi}G_{sc}*d_{r}[\omega _{s}sin(\varphi)sin(\delta)+cos(\varphi)cos(\delta)sin(\omega _{s}]
+R_{a}=\frac{24 (60)}{\pi}G_{sc}*d_{r}[\omega _{s}sin(\varphi)sin(\delta)+cos(\varphi)cos(\delta)sin(\omega _{s})]
 \end{equation}
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einer Stunde (oder in kürzerem Zeitintervall ) [MJ/m$\mathrm{^{2}}$h]\\
+R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einem Tag (oder in längerem Zeitintervall) [MJ/m$\mathrm{^{2}}$d]\\
 G$\mathrm{_{sc}}$ & Solarkonstante = 0.0820 MJ/m$\mathrm{^{2}}$min\\
-d$\mathrm{_{r}}$ & inverse relative Distanz Sonne-Erde\\
+d$\mathrm{_{r}}$ & inverse relative Distanz Sonne-Erde [m]\\
 $\mathrm{\delta}$ & solare Deklination [rad]\\
 $\mathrm{\varphi}$ & geografische Breite [rad]\\
 $\mathrm{\omega_{s}}$ & Sonneneinstrahlwinkel [rad]\\
 \end{tabular}
 \end{table}
+
+\begin{equation}
+\label{eq:dr}
+d_r=1+0.033cos\left(\frac{2\pi}{365}J\right)
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{d_r}$ & inverse Distanz Sonne-Erde [m]\\
+J & Korrekturfaktor (siehe \cite{fao} Annex 2 Table 2.5)\\
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\label{eq:delta_radiation}
+\delta=0.409sin\left(\frac{2\pi}{365}J-1.30\right)
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{\delta}$ & solare Deklination [rad]\\
+J & Korrekturfaktor (siehe \cite{fao} Annex 2 Table 2.5)\\
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\label{eq:omega_s}
+\omega_s=arccos[-tan(\varphi)tan(\delta)]
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{\omega_s}$ & Sonneneinstrahlwinkel [rad]\\
+$\mathrm{\varphi}$ & geografische Breite [rad]\\
+$\mathrm{\delta}$ & solare Deklination [rad]\\
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\label{eq:omega_i}
+\omega_1=\omega-\frac{\pi t_i}{24}
+\end{equation}
+\begin{equation}
+\omega_2=\omega+\frac{\pi t_i}{24}
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{\omega}$ & Sonneneinstrahlwinkel [rad]\\
+$\mathrm{t_i}$ & Zeitintervaldauer [h]\\
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\label{eq:omega}
+\omega=\frac{\pi}{12}[(t+0.06667(L_z-L_m)+S_c)-12]
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{\omega}$ & Sonneneinstrahlwinkel [rad]\\
+t & Zeit [h]\\
+$\mathrm{L_z}$ & Längengrad in der Mitte der Zeitzone [rad]\\
+$\mathrm{L_m}$ & Längengrad des Messpunktes [rad]\\
+$\mathrm{S_c}$ & saisonaler Korrekturfaktor [h]\\
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\label{eq:s_c}
+S_c=0.1645sin(2b)-0.1255cos(b)-0.025sin(b)
+\end{equation}
+\begin{equation}
+b=\frac{2\pi(J-81)}{364}
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{S_c}$ & saisonaler Korrekturfaktor [h]\\
+J & Korrekturfaktor (siehe \cite{fao} Annex 2 Table 2.5)\\
+\end{tabular}
+\end{table}
+
 
 
 
