@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  21 MAR 2013 13:12
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  21 MAR 2013 16:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -915,14 +915,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
 
-[4] <figures/lysimeter_ART.jpg, id=68, 482.2321pt x 282.59839pt>
+[4] <figures/lysimeter_ART.jpg, id=73, 482.2321pt x 282.59839pt>
 File: figures/lysimeter_ART.jpg Graphic file (type jpg)
 
 <use figures/lysimeter_ART.jpg>
 Package pdftex.def Info: figures/lysimeter_ART.jpg used on input line 9.
 (pdftex.def)             Requested size: 368.57838pt x 215.99731pt.
 
-<figures/lysimeter_schema.jpg, id=71, 737.75626pt x 430.60875pt>
+<figures/lysimeter_schema.jpg, id=76, 737.75626pt x 430.60875pt>
 File: figures/lysimeter_schema.jpg Graphic file (type jpg)
 
 <use figures/lysimeter_schema.jpg>
@@ -933,60 +933,73 @@ Package pdftex.def Info: figures/lysimeter_schema.jpg used on input line 16.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.25 \begin{equation}
-                     pdfTeX warning (ext4): destination with the same identifie
-r (name{figure.2}) has been already used, duplicate ignored
+l.20 
+      <./figures/lysimeter_ART.jpg>] [6pdfTeX warning (ext4): destination with 
+the same identifier (name{figure.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.25 \begin{equation}
-                      <./figures/lysimeter_ART.jpg> <./figures/lysimeter_schema
-.jpg>] <figures/penman_widerstand.jpg, id=85, 952.55875pt x 578.16pt>
+l.62 
+      <./figures/lysimeter_schema.jpg>]
+<figures/penman_widerstand.jpg, id=100, 952.55875pt x 578.16pt>
 File: figures/penman_widerstand.jpg Graphic file (type jpg)
 
 <use figures/penman_widerstand.jpg>
-Package pdftex.def Info: figures/penman_widerstand.jpg used on input line 66.
+Package pdftex.def Info: figures/penman_widerstand.jpg used on input line 65.
 (pdftex.def)             Requested size: 368.57838pt x 223.70827pt.
- [6] [7pdfTeX warning (ext4): destination with the same identifier (name{figure
-.3}) has been already used, duplicate ignored
+ [7pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.94 \begin{equation}
-                      <./figures/penman_widerstand.jpg>] [8]
-Overfull \hbox (25.43971pt too wide) in paragraph at lines 160--169
+l.90 
+      <./figures/penman_widerstand.jpg>]
+<figures/strahlung.jpg, id=112, 644.4075pt x 485.815pt>
+File: figures/strahlung.jpg Graphic file (type jpg)
+
+<use figures/strahlung.jpg>
+Package pdftex.def Info: figures/strahlung.jpg used on input line 126.
+(pdftex.def)             Requested size: 368.57838pt x 277.8811pt.
+ [8] [9pdfTeX warning (ext4): destination with the same identifier (name{figure
+.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.160 
+       <./figures/strahlung.jpg>]
+Overfull \hbox (25.43971pt too wide) in paragraph at lines 167--176
  [][] 
  []
 
 
-Overfull \hbox (13.07959pt too wide) in paragraph at lines 177--185
+Overfull \hbox (13.07959pt too wide) in paragraph at lines 184--192
  [][] 
  []
 
-[9] [10] [11]) (./resultate.tex) (./diskussion.tex) (./anhang.tex)
-(./Experiment_4.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 90.
- [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 90.
+[10] [11] [12]) (./resultate.tex) (./diskussion.tex) (./schlussfolgerung.tex)
+(./anhang.tex) (./Experiment_4.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 91.
+ [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 91.
  (./Experiment_4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 90.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 90.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 91.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 91.
 Package rerunfilecheck Info: File `Experiment_4.out' has not changed.
-(rerunfilecheck)             Checksum: C549FB469F2D78AFFBB7DA6905E7CCFB;434.
+(rerunfilecheck)             Checksum: C187D961FABF53184C8F386E5A56C0E3;485.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 90.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 91.
  ) 
 Here is how much of TeX's memory you used:
- 9977 strings out of 493488
- 147299 string characters out of 3141326
- 255821 words of memory out of 3000000
- 13028 multiletter control sequences out of 15000+200000
+ 9993 strings out of 493488
+ 147593 string characters out of 3141326
+ 256062 words of memory out of 3000000
+ 13037 multiletter control sequences out of 15000+200000
  31216 words of font info for 63 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,12n,54p,872b,392s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,54p,872b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pf
 b></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
@@ -1002,10 +1015,10 @@ xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
 live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texli
 ve/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive
 /2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Experiment_4.pdf (12 pages, 646234 bytes).
+Output written on Experiment_4.pdf (13 pages, 716732 bytes).
 PDF statistics:
- 220 PDF objects out of 1000 (max. 8388607)
- 184 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 80 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 236 PDF objects out of 1000 (max. 8388607)
+ 196 compressed objects within 2 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

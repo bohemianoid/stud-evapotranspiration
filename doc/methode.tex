@@ -29,10 +29,10 @@ AET=P-SW-\Delta W
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-AET& Reale Evapotranspiration [H/T$^{-1}$]\\
-P& Niederschlagsrate  [H/T$^{-1}$]\\
-SW & Sickerwasserrate  [H/T$^{-1}$]\\
-$\Delta W$ & Änderung der Wasserspeichers  [H/T$^{-1}$]\\
+AET& Reale Evapotranspiration [H/T]\\
+P& Niederschlagsrate  [H/T]\\
+SW & Sickerwasserrate  [H/T]\\
+$\mathrm{\Delta W}$ & Änderung des Wasserspeichers  [H/T]\\
 \end{tabular}
 \end{table}
 
@@ -47,15 +47,14 @@ Die Änderung des Wasserspeichers wird aus der Gewichtsdifferenz des Lysimeters 
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-$\Delta W$ & Änderung der Wasserspeichers  [H/T$^{-1}$]\\
+$\Delta W$ & Änderung der Wasserspeichers [H/T]\\
 $\Delta m$ & Gewichtsänderung [kg]\\
-$\rho_{Wasser}$ & Dichte des Wassers [kg/m$^3$]\\
-A & Oberflläche des Lysimeters [m$^2$]
+$\mathrm{\rho_{Wasser}}$ & Dichte des Wassers $\mathrm{[kg/m^3]}$\\
+A & Oberflläche des Lysimeters $\mathrm{[m^2]}$
 \end{tabular}
 \end{table}
 
- Zur Bestimmung der Niederschlagsrate werden die Daten eines Niedeschlagsmessgeräts verwendet. Die Sickerwasserrate wird aus de
-
+Zur Bestimmung der Niederschlagsrate werden die Daten eines Niedeschlagsmessgeräts verwendet. Die Sickerwasserrate wird aus der Wassermenge, die unter dem Lysimeter aufgefangen wird, bestimmt.
 
 \subsection{FAO Penman-Monteith-Methode}
 
@@ -64,7 +63,7 @@ Die Penman-Monteith-Methode kombiniert die beiden Ansätze der Massenbilanz und 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/penman_widerstand.jpg}
-\caption{Schematische Darstellung des aerodynamischen und des Oberflächenwiderstands in der Penman-Monteith-Methode}
+\caption{Schematische Darstellung des aerodynamischen und des Oberflächenwiderstands in der Penman-Monteith-Methode (aus \cite{fao})}
 \label{fig:widerstand}
 \end{figure}
 
@@ -121,6 +120,14 @@ T & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\
 \end{table}
 
 \item[Nettostrahlung]
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/strahlung.jpg}
+\caption{Schematische Darstellung der unterschiedlichen Strahlungsarten. $\mathrm{R_{s}}$ ist die kurzwellige Strahlung, $\mathrm{R_{l}}$ die langwellige Strahlung und $\mathrm{R_{a}}$ die atmosphärische Strahlung (aus \cite{fao})}
+\label{fig:strahlung}
+\end{figure}
+
 \begin{equation}
 \label{eq:rn}
 R_n=0.77*R_s-\sigma\left[\frac{T_{max,K}^4+T_{min,K}^4}{2}\right]\left(0.34-0.14\sqrt{e_a}\right)\left(1.35\frac{R_s}{R_{s0}}-0.35\right)
@@ -188,14 +195,6 @@ $\mathrm{\omega_{s}}$ & Sonneneinstrahlwinkel [rad]\\
 \label{eq:dr}
 d_r=1+0.033cos\left(\frac{2\pi}{365}J\right)
 \end{equation}
-\begin{table}[H]
-\centering
-\begin{tabular}{ll}
-$\mathrm{d_r}$ & inverse Distanz Sonne-Erde [m]\\
-J & Korrekturfaktor (siehe \cite{fao} Annex 2 Table 2.5)\\
-\end{tabular}
-\end{table}
-
 \begin{equation}
 \label{eq:delta_radiation}
 \delta=0.409sin\left(\frac{2\pi}{365}J-1.30\right)
@@ -203,6 +202,7 @@ J & Korrekturfaktor (siehe \cite{fao} Annex 2 Table 2.5)\\
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
+$\mathrm{d_r}$ & inverse Distanz Sonne-Erde [m]\\
 $\mathrm{\delta}$ & solare Deklination [rad]\\
 J & Korrekturfaktor (siehe \cite{fao} Annex 2 Table 2.5)\\
 \end{tabular}
@@ -266,9 +266,6 @@ J & Korrekturfaktor (siehe \cite{fao} Annex 2 Table 2.5)\\
 \end{tabular}
 \end{table}
 
-
-
-
 \item[Psychrometerkonstante]
 \begin{equation}
 \label{eq:gamma}
@@ -311,19 +308,19 @@ T & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\\end{tabular}
 \end{description}
 
 \subsection{Turc-Methode}
-Das Modell von Turc ist für Frankreich und Nordafrika entwickelt worden und ist nur für Temperaturen über $\mathrm{^{\circ}C}$ definiert.
+Das Modell von Turc ist für Frankreich und Nordafrika entwickelt worden und ist nur für Temperaturen über 0\,$\mathrm{^{\circ}C}$ definiert.
 
 Es ist ein strahlungsbasiertes empirisches Modell. Als Input Parameter wird aber nicht nur die globale Strahlung, sondern auch die Temperatur benötigt. Das Modell ist nur für Temperaturen im positiven Bereich anwendbar und wird ungenau bei tiefen Temperaturen. Die potentielle Evapotranspirationsrate berechnet sich zu:
 
 \begin{equation}
 \label{eq:turc}
-PET=0.31*C*\left(R_G+2.094\right)*\frac{T}{T+15}
+PET=0.31C\left(R_G+2.094\right)*\frac{T}{T+15}
 \end{equation}
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
 PET & Evapotranspirationsrate nach Turc  $\mathrm{[mm/d]}$\\
-T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{{\circ}C]}$\\
+T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{[^{\circ}C]}$\\
 $\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
 C & für rel. Luftfeuchtigkeit RH $\geq$ 50\% = 1\\
 \end{tabular}
@@ -345,7 +342,7 @@ Das Modell von Ivanov ist eine modifizierte Version des Modells von Turc. Es kan
 
 \begin{equation}
 \label{eq:ivanov_d}
-PET=0.000036*(25+T)^2*(100-RH)
+PET=0.000036(25+T)^2(100-RH)
 \end{equation}
 \begin{table}[H]
 \centering
@@ -360,7 +357,7 @@ Für die monatliche Evapotranspiration wird folgende Formel verwendet:
 
 \begin{equation}
 \label{eq:ivanov_m}
-PET=0.0011*(25+T)^2*(100-RH)
+PET=0.0011(25+T)^2(100-RH)
 \end{equation}
 \begin{table}[H]
 \centering
