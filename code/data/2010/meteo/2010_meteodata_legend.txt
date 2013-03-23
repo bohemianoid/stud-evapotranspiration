@@ -1,0 +1,49 @@
+Bundesamt für Meteorologie und Klimatologie, MeteoSchweiz
+Krähbühlstrasse 58
+CH-8044 Zürich 
+
+stn yyyyMMddHHmm
+
+stn Stationskürzel
+y   Jahr
+M   Monat
+d   Tag
+H   Stunde
+m   Minute
+
+Zeitangaben in UTC: 00:40 UTC = 02:40 Sommerzeit
+                              = 01:40 Winterzeit
+
+Zeitbezug bei Stundenwerten, sofern in der Parameterbeschreibung nicht anders vermerkt: HH  = (HH-1):41 - HH:40
+Beispiel: 13 = beinhaltet Messperiode von 12:41 bis 13:40 
+
+Fehlende Messwerte sind gekenntzeichnet mit '-'
+
+Qualitätsinformationen: Die Legende zu den Qualitätsinformationen ist zu finden unter: www.meteoschweiz.ch/de/aboutdata
+
+ 
+
+
+
+
+Stationen
+---------
+stn       Name                                 Länge/Breite             Koordinaten [km] Höhe ü. M. [m]
+REH       Zürich / Affoltern                   8°31'/47°26'             681428/253545    443
+
+Parameter
+---------
+          Einheit                              Beschreibung
+tso010hs  °C                                   Bodentemperatur 10 cm Tiefe; Momentanwert HH+10
+tso020hs  °C                                   Bodentemperatur 20 cm Tiefe; Momentanwert HH+10
+tso005hs  °C                                   Bodentemperatur 5 cm Tiefe; Momentanwert HH+10
+gre000b0  W/m²                                 Globalstrahlung; bürgerliches Stundenmittel
+prestab0  hPa                                  Luftdruck auf Stationshöhe (QFE); bürgerliches Stundenmittel
+tre200b0  °C                                   Lufttemperatur 2 m über Boden; bürgerliches Stundenmittel
+tre005b0  °C                                   Lufttemperatur 5 cm über Gras; bürgerliches Stundenmittel
+rre150b0  mm                                   Niederschlag; bürgerliche Stundensumme
+ure200b0  %                                    Relative Luftfeuchtigkeit 2 m über Boden; bürgerliches Stundenmittel
+sre000b0  min                                  Sonnenscheindauer; bürgerliche Stundensumme
+fkl010b0  m/s                                  Windgeschwindigkeit skalar; bürgerliches Stundenmittel
+dkl010b0  °                                    Windrichtung; bürgerliches Stundenmittel
+
