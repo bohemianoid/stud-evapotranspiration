@@ -1,13 +1,12 @@
-function [ mSum ] = monthlySum( hTime, hValues )
-%MONTHLY_SUM Computes monthly sum
-%   Detailed explanation goes here
+function [ mValues ] = monthlySum( Values, Time )
+%MONTHLYSUM computes monthly sum
 
-    hTime = month( hTime );
-    mSum = zeros( max( hTime ), 1 );
+    Time   = month( Time );
+    mValues = zeros( max( Time ), 1 );
     
-    for i = 1:max( hTime )
+    for i = 1:max( Time )
         
-        mSum( i ) = nansum( hValues( hTime == i ) );
+        mValues( i ) = nansum( Values( Time == i ) );
         
     end
 

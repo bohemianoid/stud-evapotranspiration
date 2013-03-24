@@ -1,9 +1,8 @@
-function [ dSum ] = dailySum( hValues )
-%DAILY_SUM Computes daily sum
-%   Detailed explanation goes here
+function [ mValues ] = dailySum( hValues )
+%DAILYSUM computes daily sum
 
-    dSum = reshape( hValues, 24, [] );
-    dSum = nansum( dSum )';
+    mValues = reshape( hValues, 24, [  ] );
+    mValues = nansum( mValues )';
 
 end
 

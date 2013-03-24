@@ -1,8 +1,8 @@
-function [ dMean ] = dailyMean( hValues )
-%DAILY_MEAN Computes daily mean
-%   Detailed explanation goes here
+function [ dValues ] = dailyMean( hValues )
+%DAILYMEAN computs daily mean
 
-    dMean = reshape( hValues, 24, [] );
-    dMean = nanmean( dMean )';
+    dValues = reshape( hValues, 24, [  ] );
+    dValues = nanmean( dValues )';
 
 end
+

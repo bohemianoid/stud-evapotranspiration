@@ -1,13 +1,12 @@
-function [ mMean ] = monthlyMean( hTime, hValues )
-%MONTHLY_MEAN Computes daily mean
-%   Detailed explanation goes here
+function [ mValues ] = monthlyMean( Values, Time )
+%MOTHLYMEAN computes monthly mean
 
-    hTime = month( hTime );
-    mMean = zeros( max( hTime ), 1 );
+    Time   = month( Time );
+    mValues = zeros( max( Time ), 1 );
     
-    for i = 1:max( hTime )
+    for i = 1:max( Time )
         
-        mMean( i ) = nanmean( hValues( hTime == i ) );
+        mValues( i ) = nanmean( Values( Time == i ) );
         
     end
 
