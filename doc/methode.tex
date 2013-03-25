@@ -293,17 +293,31 @@ z & Messhöhe [m]\\
 \end{tabular}
 \end{table}
 
+\item[aktueller Dampfdruck]
+\begin{equation}
+\label{eq:ea}
+e_a=0.6108*e^{\frac{17.27T}{T+273.3}}
+\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+$\mathrm{e_a}$ & aktueller Dampfdruck $\mathrm{[kPa]}$\\
+T & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\\end{tabular}
+\end{table}
+
 \item[Sättigungsdampfdruck]
 \begin{equation}
 \label{eq:es}
-e_s=0.6108*e^{\frac{17.27T}{T+273.3}}
+e_s=\frac{e_a(T_{max})+e_a(T_{min})}{2}
 \end{equation}
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
 $\mathrm{e_s}$ & Sättigungsdampfdruck $\mathrm{[kPa]}$\\
-T & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\\end{tabular}
+T & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\
+\end{tabular}
 \end{table}
+
 
 \end{description}
 
@@ -349,7 +363,7 @@ PET=0.000036(25+T)^2(100-RH)
 \begin{tabular}{ll}
 PET & Evapotranspirationsrate nach Ivanov  $\mathrm{[mm/d]}$\\
 T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{{^\circ}C]}$\\
-$\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
+RH& durchschnittliche rel. Luftfeuchtigkeit [\%]\\
 \end{tabular}
 \end{table}
 
@@ -364,11 +378,13 @@ PET=0.0011(25+T)^2(100-RH)
 \begin{tabular}{ll}
 PET & Evapotranspirationsrate nach Ivanov  $\mathrm{[mm/Mt]}$\\
 T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{{^\circ}C]}$\\
-$\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
+RH& durchschnittliche rel. Luftfeuchtigkeit [\%]\\
 \end{tabular}
 \end{table}
 
+\subsection{Sensitivitätsanalyse}
 
+Die Sensitivitätsanalyse wird für die Penman-Monteith Formel\,(\ref{eq:penman_ref}), die Methode nach Turc\,(\ref{eq:turc}) und die Methode nach Ivanov\,(\ref{eq:ivanov_d}) durchgeführt. Dazu wird jeweils ein Parameter um $\pm$10\% verändert und die Auswirkungen auf die berechnete Evapotranspiration berechnet. Für die gemessen Grössen wurden Werte festgesetzt und daraus die weiteren Parameter berechnet. Für den Sättigungsdampfdruck, wird eine minimale Temperatur von $\mathrm{10\,^{\circ}C}$ und eine maximale Temperatur von $\mathrm{20\,^{\circ}C}$ angenomen.
 
 
 
