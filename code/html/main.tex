@@ -1,19 +1,51 @@
-%% Measuring and Modelling Evapotranspiration
-% Authors:       Debora Jäckel, Simon Roth, Gabriela Schär, Alexandra Schuler //
-%                Institute of Environmental Engineering, ETH Zurich //
-%                Labor II //
-% Version:       March 2013 //
-% Last revision: 20. March 2013
+
+% This LaTeX was auto-generated from an M-file by MATLAB.
+% To make changes, update the M-file and republish this document.
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{color}
+
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+    
+    
+\section*{Measuring and Modelling Evapotranspiration}
+
+\begin{par}
+Authors:       Debora Jäckel, Simon Roth, Gabriela Schär, Alexandra Schuler //                Institute of Environmental Engineering, ETH Zurich //                Labor II // Version:       March 2013 // Last revision: 20. March 2013
+\end{par} \vspace{1em}
+
+\subsection*{Contents}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item Reset workspace
+   \item Import data
+   \item Analysis specification
+   \item Define constants
+   \item Define vectors
+   \item Compute evapotranspiration
+   \item Figures
+   \item Free memory
+\end{itemize}
 
 
-%% Reset workspace
+\subsection*{Reset workspace}
 
+\begin{verbatim}
 clear all
 close all
+\end{verbatim}
 
 
-%% Import data
+\subsection*{Import data}
 
+\begin{verbatim}
 lysimeter.folder = 'data/2012/lysimeter/';
 lysimeter.file   = '2012_lysimeter_01.txt';
 meteo.folder     = 'data/2012/meteo/';
@@ -27,25 +59,32 @@ meteo.data     = dlmread( [ meteo.folder meteo.file ], ';', 3, 1 );
 lysimeter.data( :, 1 ) = datenum( num2str( lysimeter.data( :, 1 ) ), 'yyyymmddHH' );
 meteo.data             = [ nan( 1, size( meteo.data, 2 ) ); meteo.data ];
 meteo.data             = [ lysimeter.data( :, 1 ), meteo.data( 1:end-1, 2:end ) ];
+\end{verbatim}
 
 
-%% Analysis specification
+\subsection*{Analysis specification}
+
+\begin{verbatim}
 t          = { '01.01.2012', '31.12.2012' };	% [dd.mm.yyyy]
 plant      = 'Raps';
 cropFactor = 1.15;                              % [-]
+\end{verbatim}
 
 
-%% Define constants
+\subsection*{Define constants}
 
+\begin{verbatim}
 alpha    = 0.23;            % [-]
 latitude = 47+26/60;        % [°]
 Gsc      = 0.0820;          % [MJ/m2 min]
 hGeo     = 443;             % [m]
 sigma    = 4.903*10^-9;     % [MJ/K4 m2 d]
+\end{verbatim}
 
 
-%% Define vectors
+\subsection*{Define vectors}
 
+\begin{verbatim}
 % time
 time.h = lysimeter.data( :, 1 );
 time.d = floor( dailyMean( time.h ) );
@@ -102,10 +141,12 @@ clear lysimeter meteo
 % mean saturation vapour pressure [kPa]
 es.d = ( satVapPressure( Tair.dMax )+satVapPressure( Tair.dMin ) )/2;
 es.m = ( satVapPressure( Tair.mMax )+satVapPressure( Tair.mMin ) )/2;
+\end{verbatim}
 
 
-%% Compute evapotranspiration
+\subsection*{Compute evapotranspiration}
 
+\begin{verbatim}
 % actual evapotranspiration [mm]
 AET.h = percip.h-percol.h-storage.h;
 AET.d = percip.d-percol.d-storage.d;
@@ -125,20 +166,37 @@ ivanovPET = ivanov( Tair, RH, cropFactor );
 % Turc and Ivanov combined [mm]
 turcIvanovPET.d = [ ivanovPET.d( 1:sum( eomday( time.y, 1:2 ) ) ); turcPET.d( sum( eomday( time.y, 1:2 ) )+1:sum( eomday( time.y, 1:10 ) ) ); ivanovPET.d( sum( eomday( time.y, 1:10 ) )+1:sum( eomday( time.y, 1:12 ) ) ) ];
 turcIvanovPET.m = [ ivanovPET.m( 1:2 ); turcPET.m( 3:10 ); ivanovPET.m( 11:12 ) ];
+\end{verbatim}
 
 
-%% Figures
-% Instruction:
-% niceFigure( time vector, [ all data vectors separated by commas ], { all
-% labels for the data vector as strings separated by commas }, the period,
-% the titel of the plot )
+\subsection*{Figures}
 
+\begin{par}
+Instruction: niceFigure( time vector, [ all data vectors separated by commas ], \{ all labels for the data vector as strings separated by commas \}, the period, the titel of the plot )
+\end{par} \vspace{1em}
+\begin{verbatim}
 niceFigure( time.d, [ AET.d, penMonPET.d ], { 'AET', 'Penman-Monteith' }, t, [ plant ' (daily)' ] )
 niceFigure( time.m, [ AET.m, penMonPET.m ], { 'AET', 'Penman-Monteith' }, t, [ plant ' (monthly)' ] )
 niceFigure( time.d, [ penMonPET.d, turcPET.d, ivanovPET.d, turcIvanovPET.d ], { 'Penman-Monteith', 'Turc', 'Ivanov', 'Turc and Ivanov combined' }, t, [ plant ' (daily)' ] )
 niceFigure( time.m, [ penMonPET.m, turcPET.m, ivanovPET.m, turcIvanovPET.m ], { 'Penman-Monteith', 'Turc', 'Ivanov', 'Turc and Ivanov combined' }, t, [ plant ' (monthly)' ] )
+\end{verbatim}
+
+\includegraphics [width=4in]{main_01.eps}
+
+\includegraphics [width=4in]{main_02.eps}
+
+\includegraphics [width=4in]{main_03.eps}
+
+\includegraphics [width=4in]{main_04.eps}
 
 
-%% Free memory
+\subsection*{Free memory}
 
+\begin{verbatim}
 clear all
+\end{verbatim}
+
+
+
+\end{document}
+    

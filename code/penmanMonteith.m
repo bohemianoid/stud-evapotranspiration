@@ -1,5 +1,8 @@
-function [ ET ] = penmanMonteith( es, Tair, RH, alpha, Rs, time, latitude, Gsc, hGeo, sigma, Tmax, Tmin, press, uz, z )
-%PENMANMONTEITH Computes potential evapotranspiration
+function [ ET ] = penmanMonteith( es, Tair, RH, alpha, Rs, time, latitude, Gsc, hGeo, sigma, Tmax, Tmin, press, uz )
+%PENMANMONTEITH computes potential evapotranspiration
+
+    % constants
+    z = 2;      % [m]
 
     % conversion
     Rs    = Rs*0.0864;      % [MJ/m2]
@@ -12,7 +15,7 @@ function [ ET ] = penmanMonteith( es, Tair, RH, alpha, Rs, time, latitude, Gsc, 
     G     = soiHeaFlu(  );
     gamma = psyCon( press );
     u2    = winProRel( uz, z );
-    ET    = PenmanMonteith( Delta, Rn, G, gamma, Tair, u2, es, ea );
+    ET    = dPenmanMonteith( Delta, Rn, G, gamma, Tair, u2, es, ea );
 
     % slope of saturation vapour pressure curve [kPa/°C]
     function [ Delta ] = sloSatVapPreCur( es, Tair )
@@ -42,7 +45,7 @@ function [ ET ] = penmanMonteith( es, Tair, RH, alpha, Rs, time, latitude, Gsc, 
         omegas = acos( -tan( phi )*tan( rho ) );
         Ra     = 24*60/pi*Gsc*dr.*( omegas*sin( phi ).*sin( rho )+cos( phi ).*cos( rho ).*sin( omegas ) );
         Rso    = ( 0.75+2*10^-5*hGeo )*Ra;
-        Rnl    = sigma*( Tmax.^4+Tmin.^4 )/2.*( 0.34-0.14*sqrt( ea ) ).*( 1.35*Rs./Rso-0.35 );
+        Rnl    = sigma*( ( Tmax+273.16 ).^4+( Tmin+273.16 ).^4 )/2.*( 0.34-0.14*sqrt( ea ) ).*( 1.35*Rs./Rso-0.35 );
         
         Rn     = Rns-Rnl;
         
@@ -70,7 +73,7 @@ function [ ET ] = penmanMonteith( es, Tair, RH, alpha, Rs, time, latitude, Gsc, 
     end
     
     % daily FAO Penman-Monteith equation [mm]
-    function [ ET ] = PenmanMonteith( Delta, Rn, G, gamma, Tair, u2, es, ea )
+    function [ ET ] = dPenmanMonteith( Delta, Rn, G, gamma, Tair, u2, es, ea )
        
         ET = ( 0.408*Delta.*( Rn-G )+gamma*900./( Tair+273 ).*u2.*( es-ea ) )./( Delta+gamma.*( 1+0.34*u2 ) );
         
