@@ -30,7 +30,6 @@ meteo.data             = [ lysimeter.data( :, 1 ), meteo.data( 1:end-1, 2:end ) 
 
 
 %% Analysis specification
-plant      = 'Raps';
 cropFactor = 1.15;                              % [-]
 
 
@@ -130,46 +129,25 @@ turcIvanovPET.m = [ ivanovPET.m( 1:2 ); turcPET.m( 3:10 ); ivanovPET.m( 11:12 ) 
 
 
 %% Figures
-% Instruction:
-% niceFigure( time vector, [ all data vectors separated by commas ], { all
-% labels for the data vector as strings separated by commas }, the period,
-% the titel of the plot )
 
-% AET + Precip, Tair, Rs, RH (week hourly)
-t = { '01.04.2012', '08.04.2012' };     % [dd.mm.yyyy]
-niceFigure( time.h, AET.h, time.h, precip.h, 'stairs', 'stairs', t, 'Datum', 'AET [mm/h]', 'Niederschlag [mm/h]' )
-niceFigure( time.h, AET.h, time.h, Tair.h, 'stairs', 'plot', t, 'Datum', 'AET [mm/h]', 'Temperatur [°C]' )
-niceFigure( time.h, AET.h, time.h, Rs.h, 'stairs', 'plot', t, 'Datum', 'AET [mm/h]', 'Sonneneinstrahlung [W/m2]' )
-niceFigure( time.h, AET.h, time.h, RH.h, 'stairs', 'plot', t, 'Datum', 'AET [mm/h]', 'Relative Luftfeuchtigkeit [%]' )
+% AET + precip, Tair, Rs, RH, windSP (week hourly)
+%t = { '01.04.2012', '08.04.2012' };     % [dd.mm.yyyy]
+%niceFigure( time.h, AET.h, time.h, precip.h, t )
+%niceFigure( time.h, AET.h, time.h, Tair.h, t )
+%niceFigure( time.h, AET.h, time.h, Rs.h, t )
+%niceFigure( time.h, AET.h, time.h, RH.h, t )
+%niceFigure( time.h, AET.h, time.h, windSp.h, t )
 
-% AET + Precip, Tair, Rs, RH (year monthly)
-t = { '01.01.2012', '31.12.2012' };     % [dd.mm.yyyy]
-niceFigure( time.m, AET.m, time.m, precip.m, 'stairs', 'stairs', t, 'Datum', 'AET [mm/m]', 'Niederschlag [mm/m]' )
-niceFigure( time.m, AET.m, time.m, Tair.m, 'stairs', 'plot', t, 'Datum', 'AET [mm/m]', 'Temperatur [°C]' )
-niceFigure( time.m, AET.m, time.m, Rs.m, 'stairs', 'plot', t, 'Datum', 'AET [mm/m]', 'Sonneneinstrahlung [W/m2]' )
-niceFigure( time.m, AET.m, time.m, RH.m, 'stairs', 'plot', t, 'Datum', 'AET [mm/m]', 'Relative Luftfeuchtigkeit [%]' )
+% AET + PET ( year monthly )
+%t = { '01.01.2012', '31.12.2012' };     % [dd.mm.yyyy]
+%niceFigure( time.m, AET.m, time.m, [ penMonPET.m, turcIvanovPET.m ], t )
+%niceFigure( time.m, AET.m, time.m, [ turcPET.m, ivanovPET.m ], t )
 
-% Penman-Monteith, TurcIvanov + Precip, Tair, Rs, RH (week daily)
-t = { '01.04.2012', '08.04.2012' };     % [dd.mm.yyyy]
-niceFigure( time.d, [ penMonPET.d, turcIvanovPET.d ], time.d, precip.d, 'stairs', 'stairs', t, 'Datum', 'PET [mm/d]', 'Niederschlag [mm/d]' )
-niceFigure( time.d, [ penMonPET.d, turcIvanovPET.d ], time.h, Tair.h, 'stairs', 'plot', t, 'Datum', 'PET [mm/d]', 'Temperatur [°C]' )
-niceFigure( time.d, [ penMonPET.d, turcIvanovPET.d ], time.h, Rs.h, 'stairs', 'plot', t, 'Datum', 'PET [mm/d]', 'Sonneneinstrahlung [W/m2]' )
-niceFigure( time.d, [ penMonPET.d, turcIvanovPET.d ], time.h, RH.h, 'stairs', 'plot', t, 'Datum', 'PET [mm/d]', 'Relative Luftfeuchtigkeit [%]' )
-
-% Penman-Monteith, TurcIvanov + Precip, Tair, Rs, RH (year mothly)
-t = { '01.01.2012', '31.12.2012' };     % [dd.mm.yyyy]
-niceFigure( time.m, [ penMonPET.m, turcIvanovPET.m ], time.m, precip.m, 'stairs', 'stairs', t, 'Datum', 'PET [mm/m]', 'Niederschlag [mm/m]' )
-niceFigure( time.m, [ penMonPET.m, turcIvanovPET.m ], time.m, Tair.m, 'stairs', 'plot', t, 'Datum', 'PET [mm/m]', 'Temperatur [°C]' )
-niceFigure( time.m, [ penMonPET.m, turcIvanovPET.m ], time.m, Rs.m, 'stairs', 'plot', t, 'Datum', 'PET [mm/m]', 'Sonneneinstrahlung [W/m2]' )
-niceFigure( time.m, [ penMonPET.m, turcIvanovPET.m ], time.m, RH.m, 'stairs', 'plot', t, 'Datum', 'PET [mm/m]', 'Relative Luftfeuchtigkeit [%]' )
-
-% AET + PET (week daily)
-t = { '01.04.2012', '08.04.2012' };     % [dd.mm.yyyy]
-niceFigure( time.d, AET.d, time.d, [ penMonPET.d, turcIvanovPET.d ], 'stairs', 'stairs', t, 'Datum', 'AET [mm/d]', 'PET [mm/d]' )
-
-% AET + PET (year monthly)
-t = { '01.01.2012', '31.12.2012' };     % [dd.mm.yyyy]
-niceFigure( time.m, AET.m, time.m, [ penMonPET.m, turcIvanovPET.m ], 'stairs', 'stairs', t, 'Datum', 'AET [mm/d]', 'PET [mm/d]' )
+% AET ( year monthly )
+%t = { '01.01.2012', '31.12.2012' };     % [dd.mm.yyyy]
+%stairs( time.m, AET.m )
+%xlim( [ datenum( t( 1 ), 'dd.mm.yyyy' ) datenum( t( 2 ), 'dd.mm.yyyy' ) ] )
+%datetick( 'x', 'keeplimits' )
 
 
 %% Free memory
