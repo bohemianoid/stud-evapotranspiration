@@ -63,7 +63,7 @@ R_{a}=\frac{12 (60)}{\pi}G_{sc}*d_{r}[(\omega _{2}-\omega _{1})sin(\varphi)sin(\
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einer Stunde (oder in kürzerem Zeitintervall) [MJ/m$\mathrm{^{2}}$h]\\
+R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einer Stunde (oder in kürzerem Zeitintervalll) [MJ/m$\mathrm{^{2}}$h]\\
 G$\mathrm{_{sc}}$ & Solarkonstante = 0.0820 MJ/m$\mathrm{^{2}}$min\\
 d$\mathrm{_{r}}$ & inverse relative Distanz Sonne-Erde\\
 $\mathrm{\delta}$ & solare Deklination [rad]\\
@@ -80,7 +80,7 @@ R_{a}=\frac{24 (60)}{\pi}G_{sc}*d_{r}[\omega _{s}sin(\varphi)sin(\delta)+cos(\va
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einem Tag (oder in längerem Zeitintervall) [MJ/m$\mathrm{^{2}}$d]\\
+R$\mathrm{_{a}}$ & extraterrestrische Strahlung in einem Tag (oder in längerem Zeitintervalll) [MJ/m$\mathrm{^{2}}$d]\\
 G$\mathrm{_{sc}}$ & Solarkonstante = 0.0820 MJ/m$\mathrm{^{2}}$min\\
 d$\mathrm{_{r}}$ & inverse relative Distanz Sonne-Erde [m]\\
 $\mathrm{\delta}$ & solare Deklination [rad]\\
@@ -130,7 +130,7 @@ $\mathrm{\delta}$ & solare Deklination [rad]\\
 \centering
 \begin{tabular}{ll}
 $\mathrm{\omega}$ & Sonneneinstrahlwinkel [rad]\\
-$\mathrm{t_i}$ & Zeitintervaldauer [h]\\
+$\mathrm{t_i}$ & Zeitintervalldauer [h]\\
 \end{tabular}
 \end{table}
 
@@ -235,6 +235,76 @@ $\mathrm{RH_{mittel}}$ & mittlere relative Luftfeuchtigkeit [\%]\\
 
 \end{description}
 
+\section{Korrelationskoeffizient}
+\label{sec:korrelation}
+$$Korrelationskoeffizient(X,Y)=\frac{\sum (x-\bar{x})(y-\bar{y})}{\sqrt{\sum (x-\bar{x})^2\sum (y-\bar{y})^2}} $$
+\center mit $\bar{x}$ und $\bar{y}$ als Mittelwerte der Datenreihen
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/korr_temp.jpg}
+\caption{grafische Darstellung der Korrelation zwischen der realen Evapotranspiration und der Temperatur}
+\label{fig:korr_temp}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/korr_relfeuchte.jpg}
+\caption{grafische Darstellung der Korrelation zwischen der realen Evapotranspiration und der relativen Luftfeuchtigkeit}
+\label{fig:korr_relfeucht}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/korr_windgeschw.jpg}
+\caption{grafische Darstellung der Korrelation zwischen der realen Evapotranspiration und der Windgeschwindigkeit}
+\label{fig:korr_wind}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/korr_globalstrahlung.jpg}
+\caption{grafische Darstellung der Korrelation zwischen der realen Evapotranspiration und der Globalstrahlung}
+\label{fig:korr_globalstrahlung}
+\end{figure}
+
+\section{potentielle Evapotranspiration}
+\label{sec:Zeitintervalllpet}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/lys1_aet_feuchte_h.jpg}
+\caption{grafische Darstellung der stündlichen PET und der relativen Luftfeuchtigkeit}
+\label{fig:aet_feuchte}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/lys1_aet_niederschlag_h.jpg}
+\caption{grafische Darstellung der stündlichen PET und des Niederschlag}
+\label{fig:aet_niederschlag}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/lys1_aet_strahlung_h.jpg}
+\caption{grafische Darstellung der stündlichen PET und der Globalstrahlung}
+\label{fig:aet_strahlung}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/lys1_aet_temp_h.jpg}
+\caption{grafische Darstellung der stündlichen PET und der Temperatur}
+\label{fig:aet_temp}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/lys1_aet_wind_h.jpg}
+\caption{grafische Darstellung der stündlichen PET und des Oberflächenwindes}
+\label{fig:aet_wind}
+\end{figure}
 
 \section{Sensitivitätsanalyse}
 \label{sec:sensitivitaet}
@@ -243,7 +313,8 @@ $\mathrm{RH_{mittel}}$ & mittlere relative Luftfeuchtigkeit [\%]\\
 \centering
 \includegraphics[width=0.8\textwidth]{figures/sensitivitaet.jpg}
 \caption{tabellarische Berechnung der Sensitivität von der Penman-Monteith-, Turc- und Ivanov-Methode. Die markierten Felder wurden  verändert.}
-\label{fig:lysimeter_ART}
+\label{fig:sensitivitaet}
 \end{figure}
+
 
 \end{appendix}

@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Experiment_4.aux
+The style file: natdin.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: experiment4.bib
+Warning--entry type for "raps" isn't style-file defined
+--line 12 of file experiment4.bib
+Warning--entry type for "ugt" isn't style-file defined
+--line 19 of file experiment4.bib
+Warning--to sort, need author or key in ugt
+Warning--to sort, need author or key in raps
+Warning--empty year in raps
+Warning--empty year in ugt
+Warning--empty year in art
+You've used 4 entries,
+            4728 wiz_defined-function locations,
+            896 strings with 6731 characters,
+and the built_in function-call counts, 1906 in all, are:
+= -- 165
+> -- 46
+< -- 44
++ -- 57
+- -- 17
+* -- 133
+:= -- 315
+add.period$ -- 1
+call.type$ -- 4
+change.case$ -- 17
+chr.to.int$ -- 4
+cite$ -- 11
+duplicate$ -- 65
+empty$ -- 162
+format.name$ -- 27
+if$ -- 373
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 18
+newline$ -- 30
+num.names$ -- 8
+pop$ -- 46
+preamble$ -- 1
+purify$ -- 25
+quote$ -- 0
+skip$ -- 115
+stack$ -- 0
+substring$ -- 96
+swap$ -- 9
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 44
+warning$ -- 5
+while$ -- 11
+width$ -- 0
+write$ -- 50
+(There were 7 warnings)

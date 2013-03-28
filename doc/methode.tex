@@ -1,8 +1,9 @@
 \section{Methode}
-Für die Bestimmung der Evapotranspiration werden die Lysimeter- und Meteodaten mit MATLAB prozessiert. Da die Meteodaten in UTC und die Lysimeterdaten in MEZ vorliegen, müssen die Datensätze zuerst an eine Zeit angepasst werden. Zudem müssen die Einheiten so angepasst werden, dass sie auf die jeweiligen Berechnungsformeln passen. 
+Für die Bestimmung der Evapotranspiration werden die Lysimeter- und Meteodaten mit MATLAB prozessiert. Da die Meteodaten in UTC und die Lysimeterdaten in MEZ vorliegen, müssen die Datensätze zuerst in ein einheitliches Zeitformat überführt werden. Zudem müssen die Einheiten so umgerechnet werden, dass sie in der jeweiligen Berechnungsformel verrechnet werden können. 
+
 \subsection {Lysimeter}
 
-Ein Lysimeter ist eine Anlage, die zur Analyse von Wasser- und Stofftransport durch den Boden dient. Es besteht aus einem zylindrischen Topf, der mit Erde gefüllt ist. Am unteren Ende befindet sich ein Auslass für das versickerte Wasser und am Rand befinden sich auf verschiedenen Höhen diverse Messsonden. Wenn das Lysimeter auf einer Waage steht, kann zusätzlich die Gewichtsveränderung und somit der Wasserinput durch Niederschlag und der Wasserverlust durch die Evapotranspiration gemessen werden. Die Abbildung \ref{fig:lysimeter_ART}  zeigt die oberirdische Ansicht der Lysimter der ART. Eine Beschreibung der Komponenten der Lysimeter ist in der Abbildung \ref{fig:lysimeter_schema} zu sehen.\\
+Ein Lysimeter ist eine Anlage, die zur Analyse von Wasser- und Stofftransport auf und durch den Boden dient. Es besteht aus einem zylindrischen Topf, der mit Erde gefüllt ist. Am unteren Ende befindet sich ein Auslass für das versickerte Wasser und am Rand befinden sich auf verschiedenen Höhen diverse Messsonden. Falls das Lysimeter auf einer Waage steht, kann zusätzlich die Gewichtsveränderung und somit der Wasserinput durch Niederschlag und der Wasserverlust durch die Evapotranspiration gemessen werden. Die Abbildung \ref{fig:lysimeter_ART}  zeigt die oberirdische Ansicht der Lysimter der ART. Eine Beschreibung der Komponenten der Lysimeter ist in der Abbildung \ref{fig:lysimeter_schema} zu sehen.\\
 
 \begin{figure}[H]
 \centering
@@ -19,7 +20,7 @@ Ein Lysimeter ist eine Anlage, die zur Analyse von Wasser- und Stofftransport du
 \end{figure}
 
 
-Zur Berechnung der Evapotranspiration mittels Lysimeterdaten wird die Bilanzformel (\ref{eq:wasserbilanz}) verwendet.
+Zur Berechnung der Evapotranspiration mittels Lysimeterdaten wird die Bilanzformel\,(\ref{eq:wasserbilanz}) verwendet.
 
 
 \begin{equation}
@@ -29,10 +30,10 @@ AET=P-SW-\Delta W
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-AET& Reale Evapotranspiration [H/T]\\
-P& Niederschlagsrate  [H/T]\\
-SW & Sickerwasserrate  [H/T]\\
-$\mathrm{\Delta W}$ & Änderung des Wasserspeichers  [H/T]\\
+AET& Reale Evapotranspiration [mm/h]\\
+P& Niederschlagsrate [mm/h]\\
+SW & Sickerwasserrate [mm/h]\\
+$\mathrm{\Delta W}$ & Änderung des Wasserspeichers [mm/h]\\
 \end{tabular}
 \end{table}
 
@@ -47,7 +48,7 @@ Die Änderung des Wasserspeichers wird aus der Gewichtsdifferenz des Lysimeters 
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-$\Delta W$ & Änderung der Wasserspeichers [H/T]\\
+$\Delta W$ & Änderung des Wasserspeichers [m/h]\\
 $\Delta m$ & Gewichtsänderung [kg]\\
 $\mathrm{\rho_{Wasser}}$ & Dichte des Wassers $\mathrm{[kg/m^3]}$\\
 A & Oberflläche des Lysimeters $\mathrm{[m^2]}$
@@ -60,7 +61,7 @@ Um den Zusammenhang zwischen der von den Lysimetern gemessenen realen Evapotrans
 
 \subsection{FAO Penman-Monteith-Methode}
 
-Die Penman-Monteith-Methode kombiniert die beiden Ansätze der Massenbilanz und der Energiebilanz. Alle in der Formel enthaltenen Parameter können entweder direkt gemessen oder dann aus meteorologischen Daten berechnet werden. Die Methode impliziert, dass der aerodynamische und der Oberflächenwiderstand von der Oberflächenbepflanzung abhängig sind [vgl.\,Abb.\,\ref{fig:widerstand}]. 
+Die Penman-Monteith-Methode kombiniert die Ansätze der Massenbilanz und der Energiebilanz. Alle in der Formel enthaltenen Parameter können entweder direkt gemessen oder aus meteorologischen, geografischen und weiteren Daten berechnet werden. Die Methode impliziert, dass der aerodynamische und der Oberflächenwiderstand von der Oberflächenbepflanzung abhängig sind [vgl.\,Abb.\,\ref{fig:widerstand}]. 
 
 \begin{figure}[H]
 \centering
@@ -69,7 +70,7 @@ Die Penman-Monteith-Methode kombiniert die beiden Ansätze der Massenbilanz und 
 \label{fig:widerstand}
 \end{figure}
 
-Der aerodynamische Widerstand beschreibt die Grösse, welche Wärme und Wasserdampf daran hindert , wegtransportiert zu werden. Diese hängt von der Windgeschwindigkeit und der Bodenrauigkeit ab. Der Oberflächenwiderstand beschreibt den Widerstand des Wasserdampfes, sich zwischen den transpirierenden Pflanzen und dem evaporierendem Boden zu bewegen. Dieser ist abhängig von Verhältnis der Blattfläche zur Bodenfläche und dem Stomatawiderstand eines gut bestrahlten Blattes. Unter Berücksichtigung dieser Einflüsse folgt die FAO\,Penman-Monteith-Formel für die Referenzfäche:
+Der aerodynamische Widerstand beschreibt die Grösse, welche Wärme und Wasserdampf daran hindert, wegtransportiert zu werden. Diese hängt von der Windgeschwindigkeit und der Bodenrauigkeit ab. Der Oberflächenwiderstand beschreibt den Widerstand des Wasserdampfes, sich zwischen den transpirierenden Pflanzen und dem evaporierendem Boden zu bewegen. Dieser ist abhängig vom Verhältnis der Blattfläche zur Bodenfläche und dem Stomatawiderstand eines gut bestrahlten Blattes. Unter Berücksichtigung dieser Einflüsse folgt die FAO\,Penman-Monteith-Formel für die Referenzfläche:
 
 \begin{equation}
 \label{eq:penman_ref}
@@ -79,18 +80,18 @@ ET_0=\frac{0.408\Delta \left(R_n-G\right)+\gamma \frac{900}{T+273}u_2\left(e_s-e
 \centering
 \begin{tabular}{ll}
 $\mathrm{ET_0}$ & potentielle Referenzevapotranspiration $\mathrm{[mm/d]}$\\
-$\mathrm{R_n}$ & Nettostrahlung $\mathrm{[MJ/m^2d]}$ \\
-$\mathrm{G}$ & Bodenwärmefluss $\mathrm{[MJ/m^2d]}$\\
-$\mathrm{\Delta}$ & Steigung der Sättigungsdampfdruckkurve $\mathrm{[kPa/^{\circ}C]}$\\
+$\mathrm{R_n}$ & Nettostrahlung auf der Pflanzenoberfläche $\mathrm{[MJ/m^2d]}$ \\
+$\mathrm{G}$ & Bodenwärmeflussdichte $\mathrm{[MJ/m^2d]}$\\
+$\mathrm{\Delta}$ & Steigung der Dampfdruckkurve $\mathrm{[kPa/^{\circ}C]}$\\
 $\mathrm{\gamma}$ & Psychrometerkonstante $\mathrm{[kPa/^{\circ}C]}$\\
-$\mathrm{T}$ & mittlere Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\
+$\mathrm{T}$ & mittlere täglichen Temperatur in 2\,m Höhe $\mathrm{[^{\circ}C]}$\\
 $\mathrm{u_2}$ & Windgeschwindigkeit in 2\,m Höhe $\mathrm{[m/s]}$\\
 $\mathrm{e_s}$ & Sättigungsdampfdruck $\mathrm{[kPa]}$\\
 $\mathrm{e_a}$ & aktueller Dampfdruck [kPa]\\
 \end{tabular}
 \end{table}
 
-In den folgenden Berechnungen wird der Bodenwärmefluss allerdings vernachlässigt. Um die Evapotranspiration einer spezifischen Pflanze zu bestimmen, wird die Referenzevapotranspiration mit einem Pflanzenfaktor multipliziert. Es folgt daraus:
+In den folgenden Berechnungen wird der Bodenwärmefluss vernachlässigt. Um die potentielle Evapotranspiration einer spezifischen Pflanze zu bestimmen, wird die Referenzevapotranspiration mit einem Pflanzenfaktor multipliziert.
 
 \begin{equation}
 \label{eq:penman_spez}
@@ -99,44 +100,34 @@ ET_C=K_C*ET_0
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
-$\mathrm{ET_0}$ & potentielle Referenzevapotranspiration $\mathrm{[mm/s]}$\\
+$\mathrm{ET_0}$ & potentielle Referenzevapotranspiration $\mathrm{[mm/d]}$\\
 $\mathrm{K_C}$ & Pflanzenfaktor [-]\\
-$\mathrm{ET_C}$ & Evapotranspiration einer spezifischen Pflanze $\mathrm{[mm/s]}$\\\
+$\mathrm{ET_C}$ & potentielle Evapotranspiration einer spezifischen Pflanze $\mathrm{[mm/d]}$\\
 \end{tabular}
 \end{table}
 
-Die Temperatur T kann aus den Meteodaten entnommen werden. Die übrigen Parameter müssen berechnet werden. Die FAO\,\cite{fao} gibt die im Anhang \ref{sec:penman} ersichtlichen Formeln vor.
+Die Temperatur T kann aus den Meteodaten entnommen werden. Die übrigen Parameter müssen berechnet oder aus Tabellen entnommen werden. Die FAO\,\cite{fao} gibt die im Anhang \ref{sec:penman} ersichtlichen Formeln vor.
 
 
 \subsection{Turc-Methode}
 Das Modell von Turc ist für Frankreich und Nordafrika entwickelt worden und ist nur für Temperaturen über 0\,$\mathrm{^{\circ}C}$ definiert.
 
-Es ist ein strahlungsbasiertes empirisches Modell. Als Input Parameter wird aber nicht nur die globale Strahlung, sondern auch die Temperatur benötigt. Das Modell ist nur für Temperaturen im positiven Bereich anwendbar und wird ungenau bei tiefen Temperaturen. Die potentielle Evapotranspirationsrate berechnet sich zu:
+Es ist ein strahlungsbasiertes empirisches Modell. Als Inputparameter wird neben der Globalstrahlung auch die Temperatur benötigt. Das Modell ist nur für Temperaturen im positiven Bereich anwendbar und wird bei Temperatur nur wenig über dem Gefrierpunkt ungenau. Die potentielle Evapotranspirationsrate berechnet sich zu:
 
 \begin{equation}
 \label{eq:turc}
-PET=0.31C\left(R_G+2.094\right)*\frac{T}{T+15}
+PET=0.31\left(1+\frac{50-RH}{70}\right)\left(R_G+2.094\right)*\frac{T}{T+15}
 \end{equation}
 \begin{table}[H]
 \centering
 \begin{tabular}{ll}
 PET & Evapotranspirationsrate nach Turc  $\mathrm{[mm/d]}$\\
-T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{[^{\circ}C]}$\\
-$\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
-C & für rel. Luftfeuchtigkeit RH $\geq$ 50\% = 1\\
-\end{tabular}
-\end{table}
-Für eine rel. Luftfeuchtigkeit < 50\% gilt:
-\begin{equation}
-\label{eq:turc_c}
-C=1+\left(\frac{50-RH}{70}\right)
-\end{equation}
-\begin{table}[H]
-\centering
-\begin{tabular}{ll}
 RH& durchschnittliche rel. Luftfeuchtigkeit [\%]\\
+T & mittlere Lufttemperatur im gegebenen Zeitintervall $\mathrm{[^{\circ}C]}$\\
+$\mathrm{R_G}$ & globale Strahlung $\mathrm{[MJ/m^2\,d]}$\\
 \end{tabular}
 \end{table}
+
 
 \subsection{Ivanov-Methode}
 Das Modell von Ivanov ist eine modifizierte Version des Modells von Turc. Es kann für die Abschätzung der Evapotranspirationsrate bei tieferen Temperaturen in den Monaten November bis Februar genutzt werden und ist ein temperaturbasiertes Modell. Für die Berechnung der täglichen Evapotranspiration wird folgende Formel benutzt:
@@ -149,7 +140,7 @@ PET=0.000036(25+T)^2(100-RH)
 \centering
 \begin{tabular}{ll}
 PET & Evapotranspirationsrate nach Ivanov  $\mathrm{[mm/d]}$\\
-T & mittlere Lufttemperatur im gegebenen Zeitinterval $\mathrm{{[^\circ}C]}$\\
+T & mittlere Lufttemperatur im gegebenen Zeitintervall $\mathrm{{[^\circ}C]}$\\
 RH& mittlere rel. Luftfeuchtigkeit [\%]\\
 \end{tabular}
 \end{table}
@@ -173,7 +164,7 @@ Die Ivanov-Methode wird mit der Turc-Methode kombiniert, um die Meteodaten über
 
 \subsection{Sensitivitätsanalyse}
 
-Die Sensitivitätsanalyse wird für die Penman-Monteith Formel\,(\ref{eq:penman_ref}), die Methode nach Turc\,(\ref{eq:turc}) und die Methode nach Ivanov\,(\ref{eq:ivanov_d}) durchgeführt. Dazu wird jeweils ein Parameter um $\pm$10\% verändert und die Auswirkungen auf die berechnete Evapotranspiration berechnet. Für die gemessen Grössen wurden Werte festgesetzt und daraus die weiteren Parameter berechnet.
+Die Sensitivitätsanalyse wird für die Penman-Monteith Formel\,(\ref{eq:penman_ref}), die Methode nach Turc\,(\ref{eq:turc}) und die Methode nach Ivanov\,(\ref{eq:ivanov_d}) durchgeführt. Dazu wird jeweils ein Parameter um $\pm$10\% verändert und die Auswirkungen auf die berechnete Evapotranspiration dokumentiert. Für die gemessenen Grössen wurden Werte festgesetzt und daraus die weiteren Parameter berechnet.
 
 
 
